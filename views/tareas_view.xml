@@ -1,19 +1,39 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="tareas_app.list">
-      <field name="name">tareas_app list</field>
-      <field name="model">tareas_app.tareas_app</field>
+    <record model="ir.ui.view" id="tareas_app.listado_tareas_form">
+      <field name="name">Formulario de Tareas</field>
+      <field name="model">tareas_app.tareas_model</field>
+      <field name="arch" type="xml">
+        <form string="Nueva Tarea">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <field name="descripcion"/>
+              <field name="realizada"/>
+              <field name="encurso"/>
+            </group>
+          </sheet>
+          <footer>
+            
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="tareas_app.listado_tareas_tree">
+      <field name="name">Listado de Tareas</field>
+      <field name="model">tareas_app.tareas_model</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="descripcion"/>
+          <field name="realizada"/>
+          <field name="encurso"/>
         </tree>
       </field>
     </record>
--->
+
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="tareas_app.action_window_tareas">
