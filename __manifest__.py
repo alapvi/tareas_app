@@ -25,6 +25,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/tareas_view.xml',
+        'views/categorias_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

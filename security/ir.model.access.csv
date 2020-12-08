@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_tareas_app_tareas_model,tareas_app.tareas_model,model_tareas_app_tareas_model,,1,1,1,1
+access_tareas_app_categorias_model,tareas_app.categorias_model,model_tareas_app_categorias_model,,1,1,1,1
