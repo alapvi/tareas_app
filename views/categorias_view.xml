@@ -61,11 +61,6 @@
     <menuitem name="Menu 1" id="tareas_app.menu_1" parent="tareas_app.menu_root"/>
     <menuitem name="Menu 2" id="tareas_app.menu_2" parent="tareas_app.menu_root"/>
 -->
-<menuitem name="Categorias" id="tareas_app.menu_categorias" parent="tareas_app.menu_root"/>
-
-<!-- actions -->
-<menuitem name="Listado" id="tareas_app.menu_categorias_listado" parent="tareas_app.menu_categorias"
-              action="tareas_app.action_window_categorias"/>
 <!--
     <menuitem name="List" id="tareas_app.menu_1_list" parent="tareas_app.menu_1"
               action="tareas_app.action_window"/>

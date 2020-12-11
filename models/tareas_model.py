@@ -7,9 +7,18 @@ class tareas_model(models.Model):
     _name = 'tareas_app.tareas_model'
     _description = 'Modelo de Tareas'
 
-    descripcion = fields.Char(string="Descripción",required=True,index=True,help="Añade la descripción de la tarea",)
+    name = fields.Char(string="Descripción",required=True,index=True,help="Añade la descripción de la tarea",)
     realizada = fields.Boolean(string="Está Realizada?",default=False)
-    encurso = fields.Boolean(string="Está en curso?",invisible=True,default=True)
+    active = fields.Boolean(string="Está en curso?",invisible=True,default=True)
+
+    def cambiaEstado(self):
+        self.ensure_one()
+        self.realizada = not self.realizada    
+        return True
+
+    def limpiaRealizadas(self):
+        return True
+
 
 #     name = fields.Char()
 #     value = fields.Integer()

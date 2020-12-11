@@ -1,23 +1,26 @@
 <odoo>
   <data>
-    <!-- explicit list view definition -->
     <record model="ir.ui.view" id="tareas_app.listado_tareas_form">
       <field name="name">Formulario de Tareas</field>
       <field name="model">tareas_app.tareas_model</field>
       <field name="arch" type="xml">
         <form string="Nueva Tarea">
           <header>
+            <button name="cambiaEstado" type="object" string="Cambia Estado" class="oe_highlight" />
+            <button name="limpiaRealizadas" type="object" string="Limpia Tareas Realizadas" />
           </header>
           <sheet>
-            <group>
-              <field name="descripcion"/>
-              <field name="realizada"/>
-              <field name="encurso"/>
+            <group name="GrupoPadre">
+              <group name="GrupoIzq">
+                <field name="name"/>
+              </group>
+              <group name="GrupoDer">
+                <field name="realizada"/>
+                <field name="active"/>
+              </group>
+              
             </group>
           </sheet>
-          <footer>
-            
-          </footer>
         </form>
       </field>
     </record>
@@ -26,14 +29,25 @@
       <field name="name">Listado de Tareas</field>
       <field name="model">tareas_app.tareas_model</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="descripcion"/>
+        <tree decoration-muted="realizada == True">
+          <field name="name"/>
           <field name="realizada"/>
-          <field name="encurso"/>
+          <field name="active"/>
         </tree>
       </field>
     </record>
 
+    <record model="ir.ui.view" id="tareas_app.tareas_model_search">
+      <field name="name">Filtros de Tareas</field>
+      <field name="model">tareas_app.tareas_model</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="name"/>
+          <filter string="Tareas Realizadas" name="TareasRealizadas" domain="[('realizada','=',True)]"/>
+          <filter string="Tareas No Realizadas" name="TareasNoRealizadas" domain="[('realizada','=',False)]"/>
+        </search>
+      </field>
+    </record>
 
     <!-- actions opening views on models -->
     <record model="ir.actions.act_window" id="tareas_app.action_window_tareas">
@@ -58,19 +72,6 @@
     </record>
 -->
 
-    <!-- Top menu item -->
-    <menuitem name="Gestión Tareas" id="tareas_app.menu_root"/>
-    <!-- menu categories -->
-    <menuitem name="Tareas" id="tareas_app.menu_tareas" parent="tareas_app.menu_root"/>
-
-<!--
-
-    <menuitem name="Menu 2" id="tareas_app.menu_2" parent="tareas_app.menu_root"/>
--->
-    <!-- actions -->
-
-    <menuitem name="Listado" id="tareas_app.menu_tareas_listado" parent="tareas_app.menu_tareas"
-              action="tareas_app.action_window_tareas"/>
 <!--
     <menuitem name="Server to list" id="tareas_app" parent="tareas_app.menu_2"
               action="tareas_app.action_server"/>
