@@ -16,7 +16,8 @@
               </group>
               <group name="GrupoDer">
                 <field name="realizada"/>
-                <field name="active"/>
+                <field name="categoria"/>
+                
               </group>
               
             </group>
@@ -32,7 +33,7 @@
         <tree decoration-muted="realizada == True">
           <field name="name"/>
           <field name="realizada"/>
-          <field name="active"/>
+          <field name="categoria"/>
         </tree>
       </field>
     </record>
@@ -45,6 +46,7 @@
           <field name="name"/>
           <filter string="Tareas Realizadas" name="TareasRealizadas" domain="[('realizada','=',True)]"/>
           <filter string="Tareas No Realizadas" name="TareasNoRealizadas" domain="[('realizada','=',False)]"/>
+          <filter string="Archivadas" name="TareasArchivadas" domain="[('active','=',False)]"/>
         </search>
       </field>
     </record>

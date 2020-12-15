@@ -10,6 +10,7 @@ class tareas_model(models.Model):
     name = fields.Char(string="Descripción",required=True,index=True,help="Añade la descripción de la tarea",)
     realizada = fields.Boolean(string="Está Realizada?",default=False)
     active = fields.Boolean(string="Está en curso?",invisible=True,default=True)
+    categoria = fields.Many2one("tareas_app.categorias_model","Categoria")
 
     def cambiaEstado(self):
         self.ensure_one()
@@ -17,6 +18,9 @@ class tareas_model(models.Model):
         return True
 
     def limpiaRealizadas(self):
+        listaTareasRealizadas = self.search([("realizada","=","True")])
+        for tarea in listaTareasRealizadas:
+            tarea.active=False
         return True
 
 
